@@ -9,8 +9,8 @@ services:
       - coolify
     labels:
       - "traefik.enable=true"
-      # Route both sslip.io and direct IP/domain
-      - "traefik.http.routers.bizforgex.rule=Host(`bizforgex.129.225.111.150.sslip.io`) || Host(`129.225.111.150`)"
+      # Route bizforgex.bhashaai.in as well as sslip.io and direct IP
+      - "traefik.http.routers.bizforgex.rule=Host(`bizforgex.bhashaai.in`) || Host(`bizforgex.129.225.111.150.sslip.io`) || Host(`129.225.111.150`)"
       - "traefik.http.routers.bizforgex.entrypoints=http"
       - "traefik.http.services.bizforgex.loadbalancer.server.port=80"
       - "coolify.managed=true"
