@@ -166,20 +166,20 @@ export const Hero = ({ onOpenConsultation, onSelectService }: HeroProps) => {
         </div>
 
         {/* Highlighted Stat Cards Bar (Matches Lincenzo Stats) */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-4 border-t border-slate-200">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6 pt-4 border-t border-slate-200">
           {STATS.map((stat, i) => (
-            <div key={i} className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm flex items-center space-x-4">
-              <div className="w-12 h-12 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0 font-bold text-lg">
-                {i === 0 && <Award className="w-6 h-6" />}
-                {i === 1 && <Building2 className="w-6 h-6" />}
-                {i === 2 && <ShieldCheck className="w-6 h-6" />}
-                {i === 3 && <Clock className="w-6 h-6" />}
+            <div key={i} className="bg-white rounded-xl p-4 sm:p-5 border border-slate-200 shadow-sm flex items-center space-x-3.5 sm:space-x-4">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0 font-bold text-base sm:text-lg">
+                {i === 0 && <Award className="w-5 h-5 sm:w-6 sm:h-6" />}
+                {i === 1 && <Building2 className="w-5 h-5 sm:w-6 sm:h-6" />}
+                {i === 2 && <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6" />}
+                {i === 3 && <Clock className="w-5 h-5 sm:w-6 sm:h-6" />}
               </div>
-              <div>
-                <p className="text-2xl font-black text-slate-900 tracking-tight">
-                  {stat.value}<span className="text-blue-600 text-lg">{stat.suffix}</span>
+              <div className="min-w-0">
+                <p className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+                  {stat.value}<span className="text-blue-600 text-base sm:text-lg">{stat.suffix}</span>
                 </p>
-                <p className="text-xs font-semibold text-slate-500">{stat.label}</p>
+                <p className="text-[11px] sm:text-xs font-semibold text-slate-500 truncate">{stat.label}</p>
               </div>
             </div>
           ))}

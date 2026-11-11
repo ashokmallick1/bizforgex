@@ -47,12 +47,19 @@ export function App() {
 
         {/* 3. Smooth Marquee Strip (Certification, Trademark, Startup, Income Tax, Compliance) */}
         <div className="bg-[#0A1C37] text-white py-3 overflow-hidden border-y border-slate-800">
-          <div className="flex space-x-12 animate-pulse text-xs uppercase tracking-widest font-semibold justify-center">
+          <div className="flex w-max animate-marquee space-x-8 text-xs uppercase tracking-widest font-semibold">
             <span className="flex items-center space-x-2">★ <span>Certification & Licensing</span></span>
             <span className="flex items-center space-x-2">★ <span>Trademark & IP</span></span>
             <span className="flex items-center space-x-2">★ <span>Startup India</span></span>
             <span className="flex items-center space-x-2">★ <span>Income Tax & GST</span></span>
             <span className="flex items-center space-x-2">★ <span>ROC Annual Compliance</span></span>
+            <span className="flex items-center space-x-2">★ <span>FSSAI & BIS Approvals</span></span>
+            <span className="flex items-center space-x-2">★ <span>Certification & Licensing</span></span>
+            <span className="flex items-center space-x-2">★ <span>Trademark & IP</span></span>
+            <span className="flex items-center space-x-2">★ <span>Startup India</span></span>
+            <span className="flex items-center space-x-2">★ <span>Income Tax & GST</span></span>
+            <span className="flex items-center space-x-2">★ <span>ROC Annual Compliance</span></span>
+            <span className="flex items-center space-x-2">★ <span>FSSAI & BIS Approvals</span></span>
           </div>
         </div>
 

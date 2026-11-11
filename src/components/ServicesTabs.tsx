@@ -121,12 +121,12 @@ export const ServicesTabs = ({ onSelectServiceModal, onOpenConsultation }: Servi
           </h3>
         </div>
 
-        {/* Tab Buttons (Elementor Nested Tabs replica) */}
-        <div className="flex justify-center mb-12">
-          <div className="inline-flex p-1.5 bg-slate-100 rounded-2xl border border-slate-200 shadow-inner">
+        {/* Tab Buttons (Elementor Nested Tabs replica - horizontally scrollable on mobile) */}
+        <div className="flex justify-center mb-10 overflow-x-auto px-2 scrollbar-none">
+          <div className="inline-flex p-1 sm:p-1.5 bg-slate-100 rounded-2xl border border-slate-200 shadow-inner max-w-full">
             <button
               onClick={() => setActiveTab('business')}
-              className={`px-6 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+              className={`px-3.5 sm:px-6 py-2.5 sm:py-3 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap cursor-pointer ${
                 activeTab === 'business'
                   ? 'bg-[#027D9B] text-white shadow-md'
                   : 'text-slate-600 hover:text-slate-900'
@@ -136,7 +136,7 @@ export const ServicesTabs = ({ onSelectServiceModal, onOpenConsultation }: Servi
             </button>
             <button
               onClick={() => setActiveTab('gov-reg')}
-              className={`px-6 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+              className={`px-3.5 sm:px-6 py-2.5 sm:py-3 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap cursor-pointer ${
                 activeTab === 'gov-reg'
                   ? 'bg-[#027D9B] text-white shadow-md'
                   : 'text-slate-600 hover:text-slate-900'
@@ -146,7 +146,7 @@ export const ServicesTabs = ({ onSelectServiceModal, onOpenConsultation }: Servi
             </button>
             <button
               onClick={() => setActiveTab('gov-lic')}
-              className={`px-6 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+              className={`px-3.5 sm:px-6 py-2.5 sm:py-3 rounded-xl text-xs sm:text-sm font-bold transition-all whitespace-nowrap cursor-pointer ${
                 activeTab === 'gov-lic'
                   ? 'bg-[#027D9B] text-white shadow-md'
                   : 'text-slate-600 hover:text-slate-900'
