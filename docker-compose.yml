@@ -9,11 +9,23 @@ services:
       - coolify
     labels:
       - "traefik.enable=true"
-      # Route bizforgex.bhashaai.in as well as sslip.io and direct IP
       - "traefik.http.routers.bizforgex.rule=Host(`bizforgex.bhashaai.in`) || Host(`bizforgex.129.225.111.150.sslip.io`) || Host(`129.225.111.150`)"
       - "traefik.http.routers.bizforgex.entrypoints=http"
       - "traefik.http.services.bizforgex.loadbalancer.server.port=80"
       - "coolify.managed=true"
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: bizforgex-tunnel
+    restart: unless-stopped
+    command: tunnel --config /etc/cloudflared/config.yml run
+    volumes:
+      - ./cloudflared-config.yml:/etc/cloudflared/config.yml:ro
+      - ./9bad5ee7-2a52-441c-bc86-e9e7a3f89bd3.json:/etc/cloudflared/9bad5ee7-2a52-441c-bc86-e9e7a3f89bd3.json:ro
+    networks:
+      - coolify
+    depends_on:
+      - bizforgex
 
 networks:
   coolify:

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { ArrowRight, ShieldCheck, CheckCircle2, Zap, Sparkles } from 'lucide-react';
+import { ArrowRight, ShieldCheck, CheckCircle2, Zap, Sparkles, Building2, Award, Clock } from 'lucide-react';
+import { STATS } from '../data/servicesData';
 
 interface HeroProps {
   onOpenConsultation: () => void;
@@ -25,76 +26,66 @@ export const Hero = ({ onOpenConsultation, onSelectService }: HeroProps) => {
   };
 
   return (
-    <section className="relative overflow-hidden pt-12 pb-20 bg-gradient-to-b from-blue-50/60 via-white to-slate-50 border-b border-slate-200">
-      {/* Decorative background glow */}
+    <section className="relative overflow-hidden pt-8 pb-16 bg-gradient-to-b from-blue-50/70 via-white to-slate-50 border-b border-slate-200">
+      {/* Background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-tr from-blue-200/40 via-sky-100/30 to-indigo-100/30 blur-3xl pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        {/* Top Hero Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-14">
           
-          {/* Left Column: Heading and Value Proposition */}
+          {/* Left Column: Heading, Subtitle & Value Prop */}
           <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-blue-100/80 border border-blue-200 text-blue-800 text-xs font-semibold">
               <Sparkles className="w-3.5 h-3.5 text-blue-600" />
-              <span>India's Trusted Business Compliance & Legal Platform</span>
+              <span>Premium Business Management & Compliance Platform</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15]">
               Empower Your Business: <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-600">
-                Compliance & Licensing
+                Compliance & Management
               </span> <br />
               Made Easy With Us.
             </h1>
 
-            <p className="text-lg text-slate-600 leading-relaxed max-w-2xl">
-              Launch and scale your enterprise with confidence. <strong>Bizforgex</strong> delivers end-to-end company registrations, government licenses, trademark protection, GST, FSSAI, ISO & BIS approvals—all handled by seasoned CAs, CSs, and corporate attorneys with 100% digital convenience and zero hidden costs.
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl">
+              Launch and grow your business with confidence. <strong>Bizforgex</strong> offers end-to-end business registration, licensing, tax compliance, trademark registration, GST, FSSAI, ISO certifications, and government approvals—all handled by experienced professionals with transparent pricing and 100% online support.
             </p>
 
-            {/* Quick Metrics / Social Proof */}
-            <div className="grid grid-cols-3 gap-4 py-3 border-y border-slate-200/80 max-w-xl">
-              <div>
-                <p className="text-2xl sm:text-3xl font-extrabold text-slate-900">12,500+</p>
-                <p className="text-xs text-slate-500 font-medium">Businesses Incorporated</p>
+            {/* Checklist points */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-sm text-slate-700 font-medium pt-2">
+              <div className="flex items-center space-x-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                <span>100% Digital & Paperless Filing</span>
               </div>
-              <div>
-                <p className="text-2xl sm:text-3xl font-extrabold text-slate-900">99.8%</p>
-                <p className="text-xs text-slate-500 font-medium">Approval Success Rate</p>
-              </div>
-              <div>
-                <p className="text-2xl sm:text-3xl font-extrabold text-slate-900">4.9 / 5</p>
-                <p className="text-xs text-slate-500 font-medium">Customer Rating</p>
-              </div>
-            </div>
-
-            {/* Highlights checkmarks */}
-            <div className="flex flex-wrap gap-y-2 gap-x-6 text-sm text-slate-700 font-medium">
-              <span className="flex items-center space-x-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                <span>Govt Recognized & Certified</span>
-              </span>
-              <span className="flex items-center space-x-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+              <div className="flex items-center space-x-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                 <span>Dedicated Relationship Manager</span>
-              </span>
-              <span className="flex items-center space-x-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                <span>Express Turnaround Options</span>
-              </span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                <span>Transparent Government Fees</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                <span>Zero Hidden Consultation Costs</span>
+              </div>
             </div>
           </div>
 
-          {/* Right Column: High-conversion Quick Inquiry Card */}
+          {/* Right Column: High-conversion Consultation Form */}
           <div className="lg:col-span-5">
             <div className="bg-white rounded-2xl shadow-xl shadow-slate-200/70 border border-slate-200 p-6 sm:p-8 relative">
-              <div className="absolute -top-3.5 right-6 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold text-xs uppercase px-3 py-1 rounded-full shadow-md flex items-center space-x-1">
+              <div className="absolute -top-3.5 right-6 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold text-xs uppercase px-3.5 py-1 rounded-full shadow-md flex items-center space-x-1">
                 <Zap className="w-3.5 h-3.5" />
-                <span>Save Up To 50% Today</span>
+                <span>Save 50% Today</span>
               </div>
 
               <div className="mb-6">
                 <h3 className="text-xl font-bold text-slate-900">Get Instant Consultation</h3>
-                <p className="text-xs text-slate-500 mt-1">Talk to our senior corporate compliance specialist within 15 minutes.</p>
+                <p className="text-xs text-slate-500 mt-1">Avail consultation from our seasoned legal consultants for expert support.</p>
               </div>
 
               <form onSubmit={handleQuickSubmit} className="space-y-4">
@@ -105,27 +96,28 @@ export const Hero = ({ onOpenConsultation, onSelectService }: HeroProps) => {
                     onChange={(e) => setQuickEntity(e.target.value)}
                     className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none bg-slate-50/50"
                   >
-                    <option value="pvt-ltd">Private Limited Company Registration (₹1,499*)</option>
-                    <option value="llp">LLP Registration (₹2,499*)</option>
-                    <option value="opc">One Person Company (OPC) (₹1,999*)</option>
+                    <option value="pvt-ltd">Company Registration in India (₹1,499*)</option>
+                    <option value="llp">LLP Registration Online (₹2,499*)</option>
+                    <option value="opc">One Person Company Registration (₹1,499*)</option>
+                    <option value="partnership">Partnership Firm Registration (₹1,299*)</option>
                     <option value="fssai">FSSAI Food License / Registration (₹999*)</option>
-                    <option value="trademark">Trademark Registration & Search (₹1,499*)</option>
-                    <option value="gst-reg">GST Registration & Filing (₹799*)</option>
                     <option value="msme">MSME / Udyam Certificate (₹499*)</option>
-                    <option value="iec">Import Export Code (IEC) (₹1,499*)</option>
-                    <option value="bis-certification">BIS / ISI Certification</option>
-                    <option value="psara-license">PSARA License for Security Agencies</option>
+                    <option value="iec">IEC Registration (Import Export Code) (₹1,499*)</option>
+                    <option value="gst-reg">GST Registration & Filing (₹799*)</option>
+                    <option value="trademark">Trademark Registration & ™ (₹1,499*)</option>
+                    <option value="psara">PSARA License for Security Agencies</option>
+                    <option value="ce-iso">CE & ISO Certification</option>
                   </select>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1.5">Your Phone Number</label>
+                  <label className="block text-xs font-semibold text-slate-700 mb-1.5">Your Mobile Number</label>
                   <div className="relative">
                     <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-sm font-semibold text-slate-500">+91</span>
                     <input
                       type="tel"
                       required
-                      placeholder="Enter 10-digit mobile"
+                      placeholder="Enter 10-digit mobile number"
                       value={mobileNum}
                       onChange={(e) => setMobileNum(e.target.value)}
                       className="w-full pl-12 pr-4 py-2.5 rounded-lg border border-slate-300 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
@@ -158,7 +150,7 @@ export const Hero = ({ onOpenConsultation, onSelectService }: HeroProps) => {
               </form>
 
               <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-                <span>Need immediate answer?</span>
+                <span>Need immediate support?</span>
                 <a
                   href="https://wa.me/918920544114?text=Hi%20Bizforgex%2C%20I%20want%20to%20register%20my%20business."
                   target="_blank"
@@ -172,6 +164,27 @@ export const Hero = ({ onOpenConsultation, onSelectService }: HeroProps) => {
           </div>
 
         </div>
+
+        {/* Highlighted Stat Cards Bar (Matches Lincenzo Stats) */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-4 border-t border-slate-200">
+          {STATS.map((stat, i) => (
+            <div key={i} className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm flex items-center space-x-4">
+              <div className="w-12 h-12 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0 font-bold text-lg">
+                {i === 0 && <Award className="w-6 h-6" />}
+                {i === 1 && <Building2 className="w-6 h-6" />}
+                {i === 2 && <ShieldCheck className="w-6 h-6" />}
+                {i === 3 && <Clock className="w-6 h-6" />}
+              </div>
+              <div>
+                <p className="text-2xl font-black text-slate-900 tracking-tight">
+                  {stat.value}<span className="text-blue-600 text-lg">{stat.suffix}</span>
+                </p>
+                <p className="text-xs font-semibold text-slate-500">{stat.label}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   );
