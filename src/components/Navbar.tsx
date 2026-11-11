@@ -1,10 +1,23 @@
-import { Mail, MessageSquare, ChevronDown } from 'lucide-react';
+import { useState } from 'react';
+import { Mail, MessageSquare, ChevronDown, Menu, X } from 'lucide-react';
 
 interface NavbarProps {
   onOpenConsultation: (service?: string) => void;
 }
 
 export const Navbar = ({ onOpenConsultation }: NavbarProps) => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+  const toggleDropdown = (name: string) => {
+    setOpenDropdown(openDropdown === name ? null : name);
+  };
+
+  const handleServiceClick = (service: string) => {
+    setMobileMenuOpen(false);
+    onOpenConsultation(service);
+  };
+
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm border-b border-slate-200 text-slate-800">
       {/* Top micro bar */}
@@ -67,7 +80,7 @@ export const Navbar = ({ onOpenConsultation }: NavbarProps) => {
             </div>
           </div>
 
-          {/* Mega Nav Links (exact Lincenzo hierarchy) */}
+          {/* Desktop Mega Nav Links */}
           <nav className="hidden lg:flex items-center space-x-7 text-sm font-semibold text-slate-700">
             <a href="#" className="text-[#027D9B] hover:text-[#0A1C37] transition-colors">Home</a>
 
@@ -146,7 +159,7 @@ export const Navbar = ({ onOpenConsultation }: NavbarProps) => {
             </div>
           </nav>
 
-          {/* Header Action CTA */}
+          {/* Header Action CTA & Mobile Trigger */}
           <div className="flex items-center space-x-3">
             <a
               href="https://wa.me/918920544114"
@@ -156,10 +169,114 @@ export const Navbar = ({ onOpenConsultation }: NavbarProps) => {
             >
               <span>Schedule a call &gt;</span>
             </a>
+
+            {/* Mobile Hamburger Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 lg:hidden focus:outline-none"
+              aria-label="Toggle Menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
 
         </div>
       </div>
+
+      {/* Mobile Drawer */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-white border-b border-slate-200 px-5 pt-3 pb-6 space-y-3 shadow-xl max-h-[80vh] overflow-y-auto">
+          {/* Section: Startup Registration */}
+          <div>
+            <button
+              onClick={() => toggleDropdown('startup')}
+              className="w-full flex items-center justify-between py-2 text-sm font-bold text-slate-800"
+            >
+              <span>Startup Registration</span>
+              <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'startup' ? 'rotate-180 text-[#027D9B]' : ''}`} />
+            </button>
+            {openDropdown === 'startup' && (
+              <div className="pl-3 space-y-1.5 py-1 text-xs border-l-2 border-[#027D9B] ml-2">
+                <button onClick={() => handleServiceClick('Company Registration')} className="block py-1 text-slate-600 hover:text-[#027D9B]">Company Registration</button>
+                <button onClick={() => handleServiceClick('LLP Registration')} className="block py-1 text-slate-600 hover:text-[#027D9B]">LLP Registration</button>
+                <button onClick={() => handleServiceClick('Partnership Firm')} className="block py-1 text-slate-600 hover:text-[#027D9B]">Partnership Firm</button>
+                <button onClick={() => handleServiceClick('Proprietorship Registration')} className="block py-1 text-slate-600 hover:text-[#027D9B]">Proprietorship Registration</button>
+                <button onClick={() => handleServiceClick('MSME Registration')} className="block py-1 text-slate-600 hover:text-[#027D9B]">MSME Udyam Registration</button>
+              </div>
+            )}
+          </div>
+
+          {/* Section: Licenses & Compliance */}
+          <div>
+            <button
+              onClick={() => toggleDropdown('licenses')}
+              className="w-full flex items-center justify-between py-2 text-sm font-bold text-slate-800"
+            >
+              <span>Licenses & Compliance</span>
+              <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'licenses' ? 'rotate-180 text-[#027D9B]' : ''}`} />
+            </button>
+            {openDropdown === 'licenses' && (
+              <div className="pl-3 space-y-1.5 py-1 text-xs border-l-2 border-[#027D9B] ml-2">
+                <button onClick={() => handleServiceClick('FSSAI Registration')} className="block py-1 text-slate-600 hover:text-[#027D9B]">FSSAI Food License</button>
+                <button onClick={() => handleServiceClick('BIS Certification')} className="block py-1 text-slate-600 hover:text-[#027D9B]">BIS & ISI Mark</button>
+                <button onClick={() => handleServiceClick('IEC Registration')} className="block py-1 text-slate-600 hover:text-[#027D9B]">Import Export Code (IEC)</button>
+                <button onClick={() => handleServiceClick('PSARA License Registration')} className="block py-1 text-slate-600 hover:text-[#027D9B]">PSARA Security License</button>
+                <button onClick={() => handleServiceClick('Shop and Establishment License')} className="block py-1 text-slate-600 hover:text-[#027D9B]">Shop & Establishment License</button>
+              </div>
+            )}
+          </div>
+
+          {/* Section: Trademark & IP */}
+          <div>
+            <button
+              onClick={() => toggleDropdown('ip')}
+              className="w-full flex items-center justify-between py-2 text-sm font-bold text-slate-800"
+            >
+              <span>Trademark & IP</span>
+              <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'ip' ? 'rotate-180 text-[#027D9B]' : ''}`} />
+            </button>
+            {openDropdown === 'ip' && (
+              <div className="pl-3 space-y-1.5 py-1 text-xs border-l-2 border-[#027D9B] ml-2">
+                <button onClick={() => handleServiceClick('Trademark Registration')} className="block py-1 text-slate-600 hover:text-[#027D9B]">Trademark Filing (™)</button>
+                <button onClick={() => handleServiceClick('Logo Registration')} className="block py-1 text-slate-600 hover:text-[#027D9B]">Logo Registration</button>
+                <button onClick={() => handleServiceClick('Copyright Registration')} className="block py-1 text-slate-600 hover:text-[#027D9B]">Copyright Registration</button>
+                <button onClick={() => handleServiceClick('Patent Filing')} className="block py-1 text-slate-600 hover:text-[#027D9B]">Patent Filing</button>
+              </div>
+            )}
+          </div>
+
+          {/* Section: Tax & Filings */}
+          <div>
+            <button
+              onClick={() => toggleDropdown('tax')}
+              className="w-full flex items-center justify-between py-2 text-sm font-bold text-slate-800"
+            >
+              <span>Tax & Filings</span>
+              <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'tax' ? 'rotate-180 text-[#027D9B]' : ''}`} />
+            </button>
+            {openDropdown === 'tax' && (
+              <div className="pl-3 space-y-1.5 py-1 text-xs border-l-2 border-[#027D9B] ml-2">
+                <button onClick={() => handleServiceClick('GST Registration')} className="block py-1 text-slate-600 hover:text-[#027D9B]">GST Registration</button>
+                <button onClick={() => handleServiceClick('GST Return Filing')} className="block py-1 text-slate-600 hover:text-[#027D9B]">GST Return Filing</button>
+                <button onClick={() => handleServiceClick('ITR Filing')} className="block py-1 text-slate-600 hover:text-[#027D9B]">Income Tax (ITR) Filing</button>
+                <button onClick={() => handleServiceClick('ROC Annual Compliance')} className="block py-1 text-slate-600 hover:text-[#027D9B]">ROC Annual Compliance</button>
+              </div>
+            )}
+          </div>
+
+          <div className="pt-4 border-t border-slate-100 flex flex-col space-y-2">
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenConsultation();
+              }}
+              className="w-full py-2.5 rounded-lg text-white font-bold text-xs uppercase tracking-wider bg-[#027D9B]"
+            >
+              Book Free Consultation
+            </button>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

@@ -3,6 +3,7 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { PremiumPlatform } from './components/PremiumPlatform';
 import { ServicesTabs } from './components/ServicesTabs';
+import { CostEstimator } from './components/CostEstimator';
 import { Process } from './components/Process';
 import { WhyUs } from './components/WhyUs';
 import { Footer } from './components/Footer';
@@ -63,6 +64,9 @@ export function App() {
           onSelectServiceModal={handleSelectServiceModal}
           onOpenConsultation={(svc) => handleOpenConsultation(svc)}
         />
+
+        {/* 5.5. Real-Time Government & Professional Fee Transparency Calculator */}
+        <CostEstimator onOpenConsultation={(svc) => handleOpenConsultation(svc)} />
 
         {/* 6. Our Working Process (4 Steps) */}
         <Process onOpenConsultation={() => handleOpenConsultation()} />
