@@ -1,0 +1,7 @@
+tunnel: 9bad5ee7-2a52-441c-bc86-e9e7a3f89bd3
+credentials-file: /etc/cloudflared/9bad5ee7-2a52-441c-bc86-e9e7a3f89bd3.json
+
+ingress:
+  - hostname: bizforgex.bhashaai.in
+    service: http://bizforgex:80
+  - service: http_status:404
